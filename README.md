@@ -1,4 +1,4 @@
-<a href="/README.md"><img align="right" width="100" src="/repos-logos/artificial-intelligence-department.png"></img></a>
+<a href="/README.md"><img align="right" width="100" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/artificial-intelligence-department.png"></img></a>
 <br>
 
 # Artificial Intelligence Trainings
@@ -7,14 +7,14 @@
     <tbody>
         <tr>
 <td align="center"><a href="/Artificial-Intelligence-Algorithms/README.md">Artificial Intelligence Algorithms Training</a><br><br>
-<a href="/Artificial-Intelligence-Algorithms/README.md"><img align="center" width="80" src="/repos-logos/computational-cognitive-science.png"></img></a>
-<a href="/Artificial-Intelligence-Algorithms/README.md"><img align="center" width="80" src="/repos-logos/soft-computing.png"></img></a>
-<a href="/Artificial-Intelligence-Algorithms/README.md"><img align="center" width="80" src="/repos-logos/artificial-intelligence.png"></img></a>
+<a href="/Artificial-Intelligence-Algorithms/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/computational-cognitive-science.png"></img></a>
+<a href="/Artificial-Intelligence-Algorithms/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/soft-computing.png"></img></a>
+<a href="/Artificial-Intelligence-Algorithms/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/artificial-intelligence.png"></img></a>
 </td>
 <td align="center"><a href="/Machine-Learning-Algorithms/README.md">Machine Learning Algorithms Training</a><br><br>
-<a href="/Machine-Learning-Algorithms/README.md"><img align="center" width="80" src="/repos-logos/unsupervised-learning.png"></img></a>
-<a href="/Machine-Learning-Algorithms/README.md"><img align="center" width="80" src="/repos-logos/supervised-learning.png"></img></a>
-<a href="/Machine-Learning-Algorithms/README.md"><img align="center" width="80" src="/repos-logos/machine-learning.png"></img></a>
+<a href="/Machine-Learning-Algorithms/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/unsupervised-learning.png"></img></a>
+<a href="/Machine-Learning-Algorithms/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/supervised-learning.png"></img></a>
+<a href="/Machine-Learning-Algorithms/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/machine-learning.png"></img></a>
 </td>
         </tr>
     </tbody>
@@ -25,14 +25,14 @@
     <tbody>
         <tr>
 <td align="center"><a href="/Neural-Networks-and-Deep-Learning/README.md">Neural Networks and Deep Learning Training</a><br><br>
-<a href="/Neural-Networks-and-Deep-Learning/README.md"><img align="center" width="80" src="/repos-logos/generative-adversarial-network.png"></img></a>
-<a href="/Neural-Networks-and-Deep-Learning/README.md"><img align="center" width="80" src="/repos-logos/deep-learning.png"></img></a>
-<a href="/Neural-Networks-and-Deep-Learning/README.md"><img align="center" width="80" src="/repos-logos/neural-networks.png"></img></a>
+<a href="/Neural-Networks-and-Deep-Learning/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/generative-adversarial-network.png"></img></a>
+<a href="/Neural-Networks-and-Deep-Learning/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/deep-learning.png"></img></a>
+<a href="/Neural-Networks-and-Deep-Learning/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/neural-networks.png"></img></a>
 </td>
 <td align="center"><a href="/Signal-Processing-and-Data-Compression/README.md">Signal Processing and Data Compression Training</a><br><br>
-<a href="/Signal-Processing-and-Data-Compression/README.md"><img align="center" width="80" src="/repos-logos/differential-equations.png"></img></a>
-<a href="/Signal-Processing-and-Data-Compression/README.md"><img align="center" width="80" src="/repos-logos/signal-processing.png"></img></a>
-<a href="/Signal-Processing-and-Data-Compression/README.md"><img align="center" width="80" src="/repos-logos/data-compression.png"></img></a>
+<a href="/Signal-Processing-and-Data-Compression/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/differential-equations.png"></img></a>
+<a href="/Signal-Processing-and-Data-Compression/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/signal-processing.png"></img></a>
+<a href="/Signal-Processing-and-Data-Compression/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/data-compression.png"></img></a>
 </td>
         </tr>
     </tbody>
@@ -43,14 +43,14 @@
     <tbody>
         <tr>
 <td align="center"><a href="/Image-Processing-and-Computer-Vision/README.md">Image Processing and Computer Vision Training</a><br><br>
-<a href="/Image-Processing-and-Computer-Vision/README.md"><img align="center" width="80" src="/repos-logos/pattern-recognition.png"></img></a>
-<a href="/Image-Processing-and-Computer-Vision/README.md"><img align="center" width="80" src="/repos-logos/computer-vision.png"></img></a>
-<a href="/Image-Processing-and-Computer-Vision/README.md"><img align="center" width="80" src="/repos-logos/image-processing.png"></img></a>
+<a href="/Image-Processing-and-Computer-Vision/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/pattern-recognition.png"></img></a>
+<a href="/Image-Processing-and-Computer-Vision/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/computer-vision.png"></img></a>
+<a href="/Image-Processing-and-Computer-Vision/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/image-processing.png"></img></a>
 </td>
 <td align="center"><a href="/Natural-Language-Processing-and-Text-Mining/README.md">Natural Language Processing and Text Mining Training</a><br><br>
-<a href="/Natural-Language-Processing-and-Text-Mining/README.md"><img align="center" width="80" src="/repos-logos/text-mining.png"></img></a>
-<a href="/Natural-Language-Processing-and-Text-Mining/README.md"><img align="center" width="80" src="/repos-logos/natural-language-processing.png"></img></a>
-<a href="/Natural-Language-Processing-and-Text-Mining/README.md"><img align="center" width="80" src="/repos-logos/data-mining.png"></img></a>
+<a href="/Natural-Language-Processing-and-Text-Mining/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/text-mining.png"></img></a>
+<a href="/Natural-Language-Processing-and-Text-Mining/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/natural-language-processing.png"></img></a>
+<a href="/Natural-Language-Processing-and-Text-Mining/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/data-mining.png"></img></a>
 </td>
         </tr>
     </tbody>
@@ -61,9 +61,9 @@
     <tbody>
         <tr>
 <td colspan=2 align="center"><a href="/Advanced-Multimedia-Mining/README.md">Advanced Multimedia Mining Training</a><br><br>
-<a href="/Advanced-Multimedia-Mining/README.md"><img align="center" width="80" src="/repos-logos/multimedia-mining.png"></img></a>
-<a href="/Advanced-Multimedia-Mining/README.md"><img align="center" width="80" src="/repos-logos/machine-vision.png"></img></a>
-<a href="/Advanced-Multimedia-Mining/README.md"><img align="center" width="80" src="/repos-logos/speech-processing.png"></img></a>
+<a href="/Advanced-Multimedia-Mining/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/multimedia-mining.png"></img></a>
+<a href="/Advanced-Multimedia-Mining/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/machine-vision.png"></img></a>
+<a href="/Advanced-Multimedia-Mining/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/speech-processing.png"></img></a>
 </td>
         </tr>
     </tbody>

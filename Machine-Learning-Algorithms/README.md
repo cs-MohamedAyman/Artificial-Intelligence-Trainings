@@ -1,8 +1,8 @@
 # Machine Learning Algorithms Training
 
-<img align="right" width="80" src="/repos-logos/unsupervised-learning.png"></img>
-<img align="right" width="80" src="/repos-logos/supervised-learning.png"></img>
-<img align="right" width="80" src="/repos-logos/machine-learning.png"></img>
+<img align="right" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/unsupervised-learning.png"></img>
+<img align="right" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/supervised-learning.png"></img>
+<img align="right" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/machine-learning.png"></img>
 <br><br><br><br><br>
 
 Machine Learning Algorithms Training for computer science students.
@@ -42,13 +42,13 @@ Machine Learning Algorithms Training for computer science students.
 <td align=center width="15%"><h3>150<br>Projects<br>Tasks</h3></td>
         </tr>
         </tr>
-<td align=center width="10%"><img src="/repos-logos/youtube.png"              width="80%"></img></td>
+<td align=center width="10%"><img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/youtube.png"              width="80%"></img></td>
 <td align=center width="15%"><h3>30<br>Courses</h3></td>
-<td align=center width="10%"><img src="/repos-logos/codeacademy.png"                width="80%"></img></td>
+<td align=center width="10%"><img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/codeacademy.png"                width="80%"></img></td>
 <td align=center width="15%"><h3>30<br>Courses</h3></td>
-<td align=center width="10%"><img src="/repos-logos/coursera.png"             width="80%"></img></td>
+<td align=center width="10%"><img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/coursera.png"             width="80%"></img></td>
 <td align=center width="15%"><h3>20<br>Courses</h3></td>
-<td align=center width="10%"><img src="/repos-logos/reference-textbooks.png"  width="80%"></img></td>
+<td align=center width="10%"><img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/reference-textbooks.png"  width="80%"></img></td>
 <td align=center width="15%"><h3>20<br>Textbooks</h3></td>
         </tr>
     </tbody>
