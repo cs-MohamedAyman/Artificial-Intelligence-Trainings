@@ -19,8 +19,8 @@
         </tr>
     </tbody>
     <tbody>
-<td align="center"><a href="/Artificial-Intelligence-Algorithms/README.md"><img src="/logos/1.png"></img></a></td>
-<td align="center"><a href="/Machine-Learning-Algorithms/README.md"><img src="/logos/2.png"></img></a></td>
+<td align="center"><a href="/Artificial-Intelligence-Algorithms/README.md"><img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/3-1.png"></img></a></td>
+<td align="center"><a href="/Machine-Learning-Algorithms/README.md">       <img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/3-2.png"></img></a></td>
     </tbody>
     <tbody>
         <tr>
@@ -37,8 +37,8 @@
         </tr>
     </tbody>
     <tbody>
-<td align="center"><a href="/Neural-Networks-and-Deep-Learning/README.md"><img src="/logos/3.png"></img></a></td>
-<td align="center"><a href="/Signal-Processing-and-Data-Compression/README.md"><img src="/logos/4.png"></img></a></td>
+<td align="center"><a href="/Neural-Networks-and-Deep-Learning/README.md">     <img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/3-3.png"></img></a></td>
+<td align="center"><a href="/Signal-Processing-and-Data-Compression/README.md"><img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/3-4.png"></img></a></td>
     </tbody>
     <tbody>
         <tr>
@@ -55,8 +55,8 @@
         </tr>
     </tbody>
     <tbody>
-<td align="center"><a href="/Image-Processing-and-Computer-Vision/README.md"><img src="/logos/5.png"></img></a></td>
-<td align="center"><a href="/Natural-Language-Processing-and-Text-Mining/README.md"><img src="/logos/6.png"></img></a></td>
+<td align="center"><a href="/Image-Processing-and-Computer-Vision/README.md">       <img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/3-5.png"></img></a></td>
+<td align="center"><a href="/Natural-Language-Processing-and-Text-Mining/README.md"><img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/3-6.png"></img></a></td>
     </tbody>
     <tbody>
         <tr>
@@ -68,7 +68,7 @@
         </tr>
     </tbody>
     <tbody>
-<td colspan=2 align="center"><a href="/Advanced-Multimedia-Mining/README.md"><img src="/logos/7.png" width="50%"></img></a></td>
+<td colspan=2 align="center"><a href="/Advanced-Multimedia-Mining/README.md"><img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/main/repos-logos/3-7.png" width="50%"></img></a></td>
     </tbody>
 </table>
 
