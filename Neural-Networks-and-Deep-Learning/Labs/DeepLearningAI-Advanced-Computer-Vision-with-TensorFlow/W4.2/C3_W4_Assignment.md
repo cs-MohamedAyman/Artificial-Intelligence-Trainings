@@ -1,0 +1,399 @@
+# **Week 4 Assignment: Saliency Maps**
+
+Welcome to the final programming exercise of this course! For this week, your task is to adapt the [Cats vs Dogs](https://tensorflow.org/datasets/catalog/cats_vs_dogs) Class Activation Map ungraded lab (the second ungraded lab of this week) and make it generate saliency maps instead.
+
+As discussed in the lectures, a saliency map shows the pixels which greatly impacts the classification of an image.
+- This is done by getting the gradient of the loss with respect to changes in the pixel values, then plotting the results.
+- From there, you can see if your model is looking at the correct features when classifying an image.
+  - For example, if you're building a dog breed classifier, you should be wary if your saliency map shows strong pixels outside the dog itself (e.g. sky, grass, dog house, etc...).
+
+In this assignment you will be given prompts but less starter code to fill in in.
+- It's good practice for you to try and write as much of this code as you can from memory and from searching the web.
+- **Whenever you feel stuck**, please refer back to the labs of this week to see how to write the code. In particular, look at:
+  - **Ungraded Lab 2: Cats vs Dogs CAM**
+  - **Ungraded Lab 3: Saliency**
+
+
+
+
+### Download test files and weights
+
+Let's begin by first downloading files we will be using for this lab.
+
+
+```python
+# Download the same test files from the Cats vs Dogs ungraded lab
+!wget -O cat1.jpg https://storage.googleapis.com/laurencemoroney-blog.appspot.com/MLColabImages/cat1.jpg
+!wget -O cat2.jpg https://storage.googleapis.com/laurencemoroney-blog.appspot.com/MLColabImages/cat2.jpg
+!wget -O catanddog.jpg https://storage.googleapis.com/laurencemoroney-blog.appspot.com/MLColabImages/catanddog.jpg
+!wget -O dog1.jpg https://storage.googleapis.com/laurencemoroney-blog.appspot.com/MLColabImages/dog1.jpg
+!wget -O dog2.jpg https://storage.googleapis.com/laurencemoroney-blog.appspot.com/MLColabImages/dog2.jpg
+
+# Download prepared weights
+!wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1kipXTxesGJKGY1B8uSPRvxROgOH90fih' -O 0_epochs.h5
+!wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1oiV6tjy5k7h9OHGTQaf0Ohn3FmF-uOs1' -O 15_epochs.h5
+
+```
+
+### Import the required packages
+
+Please import:
+
+  * Tensorflow
+  * Tensorflow Datasets
+  * Numpy
+  * Matplotlib's PyPlot
+  * Keras Models API classes you will be using
+  * Keras layers you will be using
+  * OpenCV (cv2)
+
+
+```python
+# Install this package to use Colab's GPU for training
+!apt install --allow-change-held-packages libcudnn8=8.4.1.50-1+cuda11.6
+```
+
+
+```python
+# NOTE (05/11/2022) - The default URL for downloading the dataset via TFDS is currently invalid. This piece of code
+# will patch that URL with the correct one. Please run this before importing the packages. If it fails, kindly report
+# in our Discourse community. Thank you!
+
+DATASET_PATH = '/usr/local/lib/python3.7/dist-packages/tensorflow_datasets/image_classification/cats_vs_dogs.py'
+!sed -i 's/3367a/5340/g' {DATASET_PATH}
+```
+
+
+```python
+# YOUR CODE HERE
+```
+
+### Download and prepare the dataset.
+
+
+
+#### Load Cats vs Dogs
+
+* Required: Use Tensorflow Datasets to fetch the `cats_vs_dogs` dataset.
+  * Use the first 80% of the *train* split of the said dataset to create your training set.
+  * Set the `as_supervised` flag to create `(image, label)` pairs.
+
+* Optional: You can create validation and test sets from the remaining 20% of the *train* split of `cats_vs_dogs` (i.e. you already used 80% for the train set). This is if you intend to train the model beyond what is required for submission.
+
+
+```python
+# Load the data and create the train set (optional: val and test sets)
+
+# YOUR CODE HERE
+```
+
+#### Create preprocessing function
+
+Define a function that takes in an image and label. This will:
+  * cast the image to float32
+  * normalize the pixel values to [0, 1]
+  * resize the image to 300 x 300
+
+
+
+```python
+def augmentimages(image, label):
+  # YOUR CODE HERE
+  return image, label
+```
+
+#### Preprocess the training set
+
+Use the `map()` and pass in the method that you just defined to preprocess the training set.
+
+
+
+```python
+augmented_training_data = # YOUR CODE HERE
+```
+
+#### Create batches of the training set.
+
+This is already provided for you. Normally, you will want to shuffle the training set. But for predictability in the grading, we will simply create the batches.
+
+```Python
+# Shuffle the data if you're working on your own personal project
+train_batches = augmented_training_data.shuffle(1024).batch(32)
+```
+
+
+```python
+train_batches = augmented_training_data.batch(32)
+```
+
+### Build the Cats vs Dogs classifier
+
+You'll define a model that is nearly the same as the one in the Cats vs. Dogs CAM lab.
+* Please preserve the architecture of the model in the Cats vs Dogs CAM lab (this week's second lab) except for the final `Dense` layer.
+* You should modify the Cats vs Dogs model at the last dense layer to output 2 neurons instead of 1.
+  - This is because you will adapt the `do_salience()` function from the lab and that works with one-hot encoded labels.
+  - You can do this by changing the `units` argument of the output Dense layer from 1 to 2, with one for each of the classes (i.e. cats and dogs).
+  - You should choose an activation that outputs a probability for each of the 2 classes (i.e. categories), where the sum of the probabilities adds up to 1.
+
+
+```python
+# YOUR CODE HERE
+
+model.summary()
+```
+
+**Expected Output:**
+
+```txt
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+conv2d (Conv2D)              (None, 300, 300, 16)      448
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 150, 150, 16)      0
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 150, 150, 32)      4640
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 75, 75, 32)        0
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 75, 75, 64)        18496
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 37, 37, 64)        0
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 37, 37, 128)       73856
+_________________________________________________________________
+global_average_pooling2d (Gl (None, 128)               0
+_________________________________________________________________
+dense (Dense)                (None, 2)                 258
+=================================================================
+Total params: 97,698
+Trainable params: 97,698
+Non-trainable params: 0
+_________________________________________________________________
+```
+
+### Create a function to generate the saliency map
+
+Complete the `do_salience()` function below to save the **normalized_tensor** image.
+- The major steps are listed as comments below.
+  - Each section may involve multiple lines of code.
+- Try your best to write the code from memory or by performing web searches.
+  - Whenever you get stuck, you can review the "saliency" lab (the third lab of this week) to help remind you of what code to write
+
+
+```python
+def do_salience(image, model, label, prefix):
+  '''
+  Generates the saliency map of a given image.
+
+  Args:
+    image (file) -- picture that the model will classify
+    model (keras Model) -- your cats and dogs classifier
+    label (int) -- ground truth label of the image
+    prefix (string) -- prefix to add to the filename of the saliency map
+  '''
+
+  # Read the image and convert channel order from BGR to RGB
+  # YOUR CODE HERE
+
+  # Resize the image to 300 x 300 and normalize pixel values to the range [0, 1]
+  # YOUR CODE HERE
+
+
+  # Add an additional dimension (for the batch), and save this in a new variable
+  # YOUR CODE HERE
+
+
+  # Declare the number of classes
+  # YOUR CODE HERE
+
+
+  # Define the expected output array by one-hot encoding the label
+  # The length of the array is equal to the number of classes
+  # YOUR CODE HERE
+
+
+  # Witin the GradientTape block:
+  # Cast the image as a tf.float32
+  # Use the tape to watch the float32 image
+  # Get the model's prediction by passing in the float32 image
+  # Compute an appropriate loss
+  # between the expected output and model predictions.
+  # you may want to print the predictions to see if the probabilities adds up to 1
+  # YOUR CODE HERE
+
+
+  # get the gradients of the loss with respect to the model's input image
+  # YOUR CODE HERE
+
+
+  # generate the grayscale tensor
+  # YOUR CODE HERE
+
+
+  # normalize the pixel values to be in the range [0, 255].
+  # the max value in the grayscale tensor will be pushed to 255.
+  # the min value will be pushed to 0.
+  # Use the formula: 255 * (x - min) / (max - min)
+  # Use tf.reduce_max, tf.reduce_min
+  # Cast the tensor as a tf.uint8
+  # YOUR CODE HERE
+
+
+  # Remove dimensions that are size 1
+  # YOUR CODE HERE
+
+
+  # plot the normalized tensor
+  # Set the figure size to 8 by 8
+  # do not display the axis
+  # use the 'gray' colormap
+  # This code is provided for you.
+  plt.figure(figsize=(8, 8))
+  plt.axis('off')
+  plt.imshow(normalized_tensor, cmap='gray')
+  plt.show()
+
+  # optional: superimpose the saliency map with the original image, then display it.
+  # we encourage you to do this to visualize your results better
+  # YOUR CODE HERE
+
+
+  # save the normalized tensor image to a file. this is already provided for you.
+  salient_image_name = prefix + image
+  normalized_tensor = tf.expand_dims(normalized_tensor, -1)
+  normalized_tensor = tf.io.encode_jpeg(normalized_tensor, quality=100, format='grayscale')
+  writer = tf.io.write_file(salient_image_name, normalized_tensor)
+```
+
+### Generate saliency maps with untrained model
+
+As a sanity check, you will load initialized (i.e. untrained) weights and use the function you just implemented.
+- This will check if you built the model correctly and are able to create a saliency map.
+
+If an error pops up when loading the weights or the function does not run, please check your implementation for bugs.
+- You can check the ungraded labs of this week.
+
+Please apply your `do_salience()` function on the following image files:
+
+* `cat1.jpg`
+* `cat2.jpg`
+* `catanddog.jpg`
+* `dog1.jpg`
+* `dog2.jpg`
+
+Cats will have the label `0` while dogs will have the label `1`.
+- For the catanddog, please use `0`.
+- For the prefix of the salience images that will be generated, please use the prefix `epoch0_salient`.
+
+
+```python
+# load initial weights
+model.load_weights('0_epochs.h5')
+
+# generate the saliency maps for the 5 test images
+# YOUR CODE HERE
+
+```
+
+With untrained weights, you will see something like this in the output.
+- You will see strong pixels outside the cat that the model uses that when classifying the image.
+- After training that these will slowly start to localize to features inside the pet.
+
+<img src='https://drive.google.com/uc?export=view&id=1h5wP52lwbBUMVLlsgyb-tQl_I9eu42X7' alt='saliency'>
+
+
+### Configure the model for training
+
+Use `model.compile()` to define the loss, metrics and optimizer.
+
+* Choose a loss function for the model to use when training.
+  - For `model.compile()` the ground truth labels from the training set are passed to the model as **integers** (i.e. 0 or 1) as opposed to one-hot encoded vectors.
+  - The model predictions are class probabilities.
+  - You can browse the [tf.keras.losses](https://tensorflow.org/api_docs/python/tf/keras/losses) and determine which one is best used for this case.
+  - Remember that you can pass the function as a string (e.g. `loss = 'loss_function_a'`).
+
+* For metrics, you can measure `accuracy`.
+* For the optimizer, please use [RMSProp](https://tensorflow.org/api_docs/python/tf/keras/optimizers/RMSprop).
+  - Please use the default learning rate of `0.001`.
+
+
+```python
+# YOUR CODE HERE
+```
+
+### Train your model
+
+Please pass in the training batches and train your model for just **3** epochs.
+- **Note:** Please do not exceed 3 epochs because the grader will expect 3 epochs when grading your output.
+  - After submitting your zipped folder for grading, feel free to continue training to improve your model.
+
+We have loaded pre-trained weights for 15 epochs so you can get a better output when you visualize the saliency maps.
+
+
+```python
+# load pre-trained weights
+model.load_weights('15_epochs.h5')
+
+# train the model for just 3 epochs
+# YOUR CODE HERE
+```
+
+### Generate saliency maps at 18 epochs
+
+You will now use your `do_salience()` function again on the same test images. Please use the same parameters as before but this time, use the prefix `salient`.
+
+
+```python
+# YOUR CODE HERE
+```
+
+You should see that the strong pixels are now very less than the ones you generated earlier. Moreover, most of them are now found on features within the pet.
+
+### Zip the images for grading
+
+Please run the cell below to zip the normalized tensor images you generated at 18 epochs. If you get an error, please check that you have files named:
+
+* salientcat1.jpg
+* salientcat2.jpg
+* salientcatanddog.jpg
+* salientdog1.jpg
+* salientdog2.jpg
+
+Afterwards, please download the **images.zip** from the Files bar on the left.
+
+
+```python
+from zipfile import ZipFile
+
+!rm images.zip
+
+filenames = ['cat1.jpg', 'cat2.jpg', 'catanddog.jpg', 'dog1.jpg', 'dog2.jpg']
+
+# writing files to a zipfile
+with ZipFile('images.zip','w') as zip:
+  for file in filenames:
+    zip.write('salient' + file)
+
+print("images.zip generated!")
+```
+
+### Optional: Saliency Maps at 95 epochs
+
+We have pre-trained weights generated at 95 epochs and you can see the difference between the maps you generated at 18 epochs.
+
+
+```python
+!wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=14vFpBJsL_TNQeugX8vUTv8dYZxn__fQY' -O 95_epochs.h5
+
+model.load_weights('95_epochs.h5')
+
+do_salience('cat1.jpg', model, 0, "epoch95_salient")
+do_salience('cat2.jpg', model, 0, "epoch95_salient")
+do_salience('catanddog.jpg', model, 0, "epoch95_salient")
+do_salience('dog1.jpg', model, 1, "epoch95_salient")
+do_salience('dog2.jpg', model, 1, "epoch95_salient")
+```
+
+**Congratulations on completing this week's assignment! Please go back to the Coursera classroom and upload the zipped folder to be graded.**
