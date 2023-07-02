@@ -18,7 +18,7 @@ import utils
 
 ## Gaussian population
 
-Begin with the most straightforward scenario: when your population follows a Gaussian distribution. You will generate the data for this population by using the [np.random.normal](https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html) function. 
+Begin with the most straightforward scenario: when your population follows a Gaussian distribution. You will generate the data for this population by using the [np.random.normal](https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html) function.
 
 
 ```python
@@ -37,9 +37,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](images/output_5_0.png)
-    
+
 
 
 ## Sampling from the population
@@ -105,9 +105,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](images/output_11_0.png)
-    
+
 
 
 The distribution of the sample means looks pretty Gaussian. However this is not good enough to determine if the theorem holds, after all you used a very small `sample_size` in this example. There are various ways to check if the sample means do follow a Gaussian distribution.
@@ -146,9 +146,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](images/output_13_0.png)
-    
+
 
 
 They look pretty similar. However you can go one step further and plot a smooth function that attempts to estimate the probability density function of the sample means through a method known as `kernel density estimation`. If this smooth function resembles the Gaussian function then you know that the distribution of the sample means is very similar to a Gaussian:
@@ -180,9 +180,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](images/output_15_0.png)
-    
+
 
 
 Both curves look almost identical!
@@ -198,9 +198,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](images/output_17_0.png)
-    
+
 
 
 The resulting QQ plot yields an almost perfect straight line which further confirms that the sample means do follow a Gaussian distribution.
@@ -241,9 +241,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](images/output_24_0.png)
-    
+
 
 
 The mean and standard deviation is not as straightforward as in the Gaussian case (since these parameters were needed to generate the data in that case). However you can easily compute those values by drawing them directly from the population:
@@ -329,9 +329,9 @@ utils.plot_kde_and_qq(binomial_sample_means, mu_sample_means, sigma_sample_means
 ```
 
 
-    
+
 ![png](images/output_34_0.png)
-    
+
 
 
 This doesn't look as good as with the Gaussian example. It looks that by using a small `sample_size` the sample means do not follow a Gaussian distribution.
@@ -367,14 +367,14 @@ utils.plot_kde_and_qq(binomial_sample_means, mu_sample_means, sigma_sample_means
 ```
 
 
-    
+
 ![png](images/output_38_0.png)
-    
+
 
 
 This time everything seems to indicate that the theorem is holding nicely!
 
-As with the previous distribution, by running the next cell you will launch an interactive widget in which you can play around with different values of $n$, $p$ and $sample\_size$. 
+As with the previous distribution, by running the next cell you will launch an interactive widget in which you can play around with different values of $n$, $p$ and $sample\_size$.
 
 See if you can find anything interesting, for instance does the theorem seem to hold better when $p$ is close to 0.5?
 
@@ -433,9 +433,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](images/output_48_0.png)
-    
+
 
 
 It is very difficult to even see the histogram due to the extreme values it has. Now compute the sample means with a `sample_size` of 30, which is usually a safe bet for the theorem to hold under other distributions:
@@ -456,9 +456,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](images/output_52_0.png)
-    
+
 
 
 As you can see, this is very different from a straight line which let's you know that the sample means do not distribute normally. But what if you used a much bigger `sample_size`?
@@ -474,9 +474,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](images/output_54_0.png)
-    
+
 
 
 Even when using a `sample_size` of 100, which might be unrealistic in real-life scenarios you still don't achieve normality for the sample means. This is important because it is a fact that the central limit theorem does not hold for all distributions and that is a limitation to consider when applying it.

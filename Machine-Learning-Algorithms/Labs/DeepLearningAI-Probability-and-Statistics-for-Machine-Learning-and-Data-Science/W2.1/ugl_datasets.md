@@ -396,7 +396,7 @@ These four groups illustrate that summary statistics alone are not sufficient fo
 
 # 2 - Second data set - Datasaurus Dozen
 
-The creation of Anscombe's quartet inspired other authors to generate datasets that have different relationships among its points but share the same summary statistics. One such dataset is the Datasaurus Dozen, which was created by AutoDesk. 
+The creation of Anscombe's quartet inspired other authors to generate datasets that have different relationships among its points but share the same summary statistics. One such dataset is the Datasaurus Dozen, which was created by AutoDesk.
 
 In this case, you will take a different approach. Instead of analyzing summary statistics and then plotting the data points, you will compare two datasets from the dozen and compute their statistics.
 

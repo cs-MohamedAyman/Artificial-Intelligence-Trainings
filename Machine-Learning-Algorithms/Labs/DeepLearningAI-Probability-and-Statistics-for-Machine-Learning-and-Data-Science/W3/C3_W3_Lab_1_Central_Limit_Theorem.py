@@ -2,9 +2,9 @@
 # coding: utf-8
 
 # # Lab: Central Limit Theorem
-# 
+#
 # Welcome! In this ungraded lab see applications of the Central Limit Theorem when working with different distributions of data. You will see how to see the theorem in action, as well as scenarios in which the theorem doesn't hold.
-# 
+#
 # Let's get started!
 
 # In[1]:
@@ -21,8 +21,8 @@ import utils
 
 
 # ## Gaussian population
-# 
-# Begin with the most straightforward scenario: when your population follows a Gaussian distribution. You will generate the data for this population by using the [np.random.normal](https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html) function. 
+#
+# Begin with the most straightforward scenario: when your population follows a Gaussian distribution. You will generate the data for this population by using the [np.random.normal](https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html) function.
 
 # In[2]:
 
@@ -43,7 +43,7 @@ plt.show()
 
 
 # ## Sampling from the population
-# 
+#
 # Since this lab uses simulated data you could very easily use the whole population to draw conclusions from the data. For instance if you didn't know about the values of $\mu$ and $\sigma$ you could get very close estimates of the true values by computing the mean and standard deviation of the whole population like so:
 
 # In[4]:
@@ -56,11 +56,11 @@ print(f"Gaussian population has mean: {gaussian_pop_mean:.1f} and std: {gaussian
 
 
 # However in real life this will most certainly not be possible and you will need to use samples that are nowhere near as big as the population to draw conclusions of the behaviour of the data.  After all, this is what statistics is all about.
-# 
+#
 # Depending on the sampling techniques you could encounter different properties, this is where the Central Limit Theorem comes in handy. For many distributions the following is true:
-# 
+#
 # The sum or average of a large number of independent and identically distributed random variables tends to follow a normal distribution, regardless of the distribution of the individual variables themselves. This is important because the normal distribution is well-understood and allows for statistical inference and hypothesis testing.
-# 
+#
 # With this in mind you need a way of averaging samples out of your population. For this the `sample_means` is defined:
 
 # In[5]:
@@ -84,13 +84,13 @@ def sample_means(data, sample_size):
 
 
 # Let's break down the function above:
-# 
+#
 # - You take random samples out of the population (the sampling is done with replacement, which means that once you select an element you put it back in the sampling space so you could choose a particular element more than once). This ensures that the independence condition is met.
-# 
+#
 # - Compute the mean of each sample
-# 
+#
 # - Save the means of each sample in a numpy array
-# 
+#
 # The theorem states that if a large enough `sample_size` is used (usually bigger than 30) then the distribution of the sample means should be Gaussian. See it in action by running the next cell:
 
 # In[6]:
@@ -105,16 +105,16 @@ plt.show()
 
 
 # The distribution of the sample means looks pretty Gaussian. However this is not good enough to determine if the theorem holds, after all you used a very small `sample_size` in this example. There are various ways to check if the sample means do follow a Gaussian distribution.
-# 
+#
 # The first one is to compute the theoretical $\mu$ and $\sigma$ of the sample means which will be denoted with the symbols $\mu_{\bar{X}}$ and $\sigma_{\bar{X}}$ respectively. These values can be computed as follows:
-# 
+#
 # - $\mu_{\bar{X}} = \mu$
-# 
-# 
+#
+#
 # - $\sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}}$
-# 
+#
 # **Note: In this case $n$ is the size of the sample.**
-# 
+#
 # And then use these values to plot a Gaussian curve with parameters $\mu_{\bar{X}}$ and $\sigma_{\bar{X}}$. If the theorem holds then the resulting distribution of the sample means should resemble this Gaussian curve. Run the next cell to include this into the plot:
 
 # In[7]:
@@ -170,7 +170,7 @@ plt.show()
 
 
 # Both curves look almost identical!
-# 
+#
 # Another way of checking for normality is to perform a QQ plot of the sample means. The points in this plot should resemble a straight line if the distribution of the data is Gaussian:
 
 # In[9]:
@@ -183,7 +183,7 @@ plt.show()
 
 
 # The resulting QQ plot yields an almost perfect straight line which further confirms that the sample means do follow a Gaussian distribution.
-# 
+#
 # Now, put everything together in an interactive widget to experiment with different values for $\mu$, $\sigma$ and `sample_size`. **To update the plots you will need to click the `Run Interact` button after changing the parameters**:
 
 # In[10]:
@@ -193,11 +193,11 @@ utils.gaussian_clt()
 
 
 # Even with very small values for `sample_size` the sample means follow a Gaussian distribution. This is actually one of the properties of the Gaussian distribution so the theorem is not as powerful in this case, since it will always hold regardless of the size of the sample.
-# 
+#
 # Now test the theorem with other distributions!
 
 # ## Binomial Population
-# 
+#
 # Now try with a population distribution that is not Gaussian. One such distribution is the Binomial distribution which you already saw covered in the lectures. To generate data that follows this distribution you will need to define values for the parameters of `n` and `p`:
 
 # In[11]:
@@ -230,10 +230,10 @@ print(f"Gaussian population has mean: {binomial_pop_mean:.1f} and std: {binomial
 
 
 # Once again, in real life you will not have access to the whole population so you need another method to compute this values. Actually the mean and standard deviation of binomal distributions are well defined and can be computed by using the following formulas:
-# 
+#
 # - $\mu = np$
-# 
-# 
+#
+#
 # - $\sigma = \sqrt{np(1-p)}$
 
 # In[14]:
@@ -246,15 +246,15 @@ print(f"Gaussian population has mean: {binomial_pop_mean:.1f} and std: {binomial
 
 
 # Now you have found these same values but without needing to sample the whole population. Nice!
-# 
+#
 # Before seeing the theorem for this case, you should know that there is a rule of thumb to know if the theorem will hold or not. This condition is the following:
-# 
+#
 # if $min(Np, N(1-p)) >= 5$ then CLT holds
-# 
+#
 # where $N = n*sample\_size$
-# 
+#
 # However, it is important to note that this rule is only a rough guideline, and other factors such as the presence of outliers and the purpose of the analysis should also be taken into consideration when choosing an appropriate statistical method.
-# 
+#
 # Now check the theorem in action. Begin by using a small `sample_size`:
 
 # In[15]:
@@ -268,10 +268,10 @@ print(f"The condition value is: {condition_value:.1f}. CLT should hold?: {True i
 
 
 # Perform the sampling and compute the theoretical values for the mean and standard deviation of the sample means. Remember these latter two can be computed like so:
-# 
+#
 # - $\mu_{\bar{X}} = \mu$
-# 
-# 
+#
+#
 # - $\sigma_{\bar{X}} = \frac{\sigma}{\sqrt{sample\_size}}$
 
 # In[16]:
@@ -297,7 +297,7 @@ utils.plot_kde_and_qq(binomial_sample_means, mu_sample_means, sigma_sample_means
 
 
 # This doesn't look as good as with the Gaussian example. It looks that by using a small `sample_size` the sample means do not follow a Gaussian distribution.
-# 
+#
 # Try again but now increasing the size of each sample:
 
 # In[18]:
@@ -328,9 +328,9 @@ utils.plot_kde_and_qq(binomial_sample_means, mu_sample_means, sigma_sample_means
 
 
 # This time everything seems to indicate that the theorem is holding nicely!
-# 
-# As with the previous distribution, by running the next cell you will launch an interactive widget in which you can play around with different values of $n$, $p$ and $sample\_size$. 
-# 
+#
+# As with the previous distribution, by running the next cell you will launch an interactive widget in which you can play around with different values of $n$, $p$ and $sample\_size$.
+#
 # See if you can find anything interesting, for instance does the theorem seem to hold better when $p$ is close to 0.5?
 
 # In[20]:
@@ -342,16 +342,16 @@ utils.binomial_clt()
 # Keep on going with another distribution!
 
 # ## Poisson Population
-# 
+#
 # Another popular distribution you might have heard of is the `poisson` distribution. It models the number of events occurring in a fixed interval of time or space, given the average rate of occurrence $\mu$ of those events.
-# 
+#
 # Since you are already familiar with the process of checking the theorem for a distribution you will skip all intermediate steps and jump straight to playing with the interactive widget.
-# 
+#
 # The only thing to consider here is that the mean and standard deviation of this distribution can be computed like this:
-# 
+#
 # - $\mu = \mu$
-# 
-# 
+#
+#
 # - $\sigma = \sqrt{\mu}$
 
 # In[21]:
@@ -363,9 +363,9 @@ utils.poisson_clt()
 # As expected, you should see that the bigger the `sample_size` the more closely the distribution of the sample means follows a Gaussian distribution.
 
 # ## Cauchy Distributions
-# 
+#
 # The Cauchy distribution is not as well-known as the other ones seen throughout this lab. It has heavy tails, which means that the probability of observing extreme values is higher than in other distributions with similar spread. It also does not have a well-defined mean or variance, which makes it less suitable for many statistical applications.
-# 
+#
 # As a result of the properties of this distribution, the central limit theorem does not hold. Run the next cell to generate a population of 1000 points that distribute Cauchy:
 
 # In[22]:

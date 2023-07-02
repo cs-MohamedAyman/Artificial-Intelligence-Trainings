@@ -19,7 +19,7 @@ Suppose you are in a TV show where you may win a car by playing a game. The game
 The game is played in two steps:
 
 1. The host lets you choose one among the three doors, but you do not open it yet.
-2. Then, the host (who know where the car is) choose one among the two remaining doors and open it, revealing a goat. 
+2. Then, the host (who know where the car is) choose one among the two remaining doors and open it, revealing a goat.
 
 <figure>
 <p align = 'center'>
@@ -99,7 +99,7 @@ def monty_hall(switch):
 
 You can use the function above to simulate one run of the game. However this would not be very practical, it is better to use the function to try a bunch of different runs at once and save the results. This way you can know for sure if one strategy beats the other after consistently using it.
 
-You can pass the above function to another function that lets you decide a strategy and perform simulations for 1, 10, 100 and 1000 runs. As you increase the number of runs you will see that the strategies converge to their true success rate: 
+You can pass the above function to another function that lets you decide a strategy and perform simulations for 1, 10, 100 and 1000 runs. As you increase the number of runs you will see that the strategies converge to their true success rate:
 
 
 ```python
@@ -108,9 +108,9 @@ utils.success_rate_plot(monty_hall)
 
 ## 4. Analytical Solution
 
-Now you are familiar with the problem and you have gotten a strong evidence that the best strategy is to **switch doors** because it will make you win about 67% of the times! 
+Now you are familiar with the problem and you have gotten a strong evidence that the best strategy is to **switch doors** because it will make you win about 67% of the times!
 
-You now will see it analytically! For this, first let's make some definitions. 
+You now will see it analytically! For this, first let's make some definitions.
 
 Define the events:
 
@@ -118,21 +118,21 @@ $E_1$ = the car is behind door 1
 $E_2$ = the car is behind door 2
 $E_3$ = the car is behind door 3
 
-Or, in a more concise way: $E_i$ = the car is behind door $i$ for $i = 1,2,3$. 
+Or, in a more concise way: $E_i$ = the car is behind door $i$ for $i = 1,2,3$.
 
 Note that these events are **mutually exclusive**, in other words, you cannot have a car simuntaneously in two doors, because of the rules of the game. This means that,
 
-$P(E_1 \cap E_2) = 0$, $P(E_1 \cap E_3) = 0$ and $P(E_2 \cap E_3) = 0$. You can say it also by writing that 
+$P(E_1 \cap E_2) = 0$, $P(E_1 \cap E_3) = 0$ and $P(E_2 \cap E_3) = 0$. You can say it also by writing that
 
 $$P(E_i \cap E_j) = 0  \text{      for } i \neq j.$$
 
-Another fact, due to the rules of the game, is that **the car is behind one of the three doors**, so 
+Another fact, due to the rules of the game, is that **the car is behind one of the three doors**, so
 
 $$P(E_1 \cup E_2 \cup E_3) = 1.$$
 
 This is, in fact, the **sample space**, or **universe**, $\omega$, because it is the set of all possible outcomes.
 
-Let's suppose you've chosen **door number 1**. Since there is an equal chance of the car being behind one of the three doors, we know that 
+Let's suppose you've chosen **door number 1**. Since there is an equal chance of the car being behind one of the three doors, we know that
 $$P(E_1) = \frac{1}{3}.$$
 
 By the **complement rule**, we know that $P(E_1^c) = 1 - P(E_1) = 1 - \frac{1}{3} = \frac{2}{3}$
@@ -147,7 +147,7 @@ Since the universe is given by $E_1 \cup E_2 \cup E_3$ (the car is behind door 1
 
 </figure>
 
-Now that you chose door 1, the Host then opens door 3, revealing a goat and asks you if you want to switch doors. If you don't switch, the probability of winning remains $\frac{1}{3}$ because this is your initial choice. If you **do** switch, then, you can notice that the Host **gave you an additional information**. They showed to you that door 3 does not have a car, which means that 
+Now that you chose door 1, the Host then opens door 3, revealing a goat and asks you if you want to switch doors. If you don't switch, the probability of winning remains $\frac{1}{3}$ because this is your initial choice. If you **do** switch, then, you can notice that the Host **gave you an additional information**. They showed to you that door 3 does not have a car, which means that
 
 $$P(E_3) = 0.$$
 
@@ -160,43 +160,43 @@ In other words, the probability that the car is behind door 2, **given that** it
 
 ## 5 Generalized Monty Hall problem (optional)
 
-Let's consider the case where the player chooses $1$ door and the Host opens $k$ doors. Would it still be better to switch? Would it depend on $k$ or on $n$? 
+Let's consider the case where the player chooses $1$ door and the Host opens $k$ doors. Would it still be better to switch? Would it depend on $k$ or on $n$?
 
 
 ## 5.1 Simulation
 
-You can simulate the problem to build your intuition. 
+You can simulate the problem to build your intuition.
 
 
 ```python
 def generalized_monty_hall(switch, n = 3, k = 1):
     if not (1 <= k <= n-2):
         raise ValueError('k must be between 1 and n-2, so the Host can leave at least 1 openable door!')
-    
+
     # All doors have a goat initially
     doors = np.array([0 for _ in range(n)])
-    
+
     # Decide which door will have a car
     winner = np.random.randint(0,n)
 
     # Place the car in the winner door
     doors[winner] = 1.0
-    
+
     # Participant selects a door at random
     choice = np.random.randint(0,n)
-    
+
     # Get doors that can be opened (host cannot open the door chosen or the one with the car)
     openable_doors = [i for i in range(n) if i not in (winner, choice)]
-    
+
     # Host open k of the available doors at random
     door_to_open = np.random.choice(openable_doors, size = k, replace = False)
-    
+
     # Switch to the other available door (the one that is not the original choice or the opened one)
     if switch:
         choices = [i for i in range(n) if i not in np.array(choice) and i not in np.array(door_to_open)]
         # Player chooses another door at random
         choice = np.random.choice(choices)
-    
+
     # Return 1 if you open a door with a car, 0 otherwise
     return doors[choice]
 ```
@@ -208,14 +208,14 @@ utils.success_rate_plot(generalized_monty_hall)
 
 ## 5.2 Analytical solution
 
-This section is more advanced, you may skip it if you want to! 
+This section is more advanced, you may skip it if you want to!
 
 Now, the game is:
 - There are $n$ doors, and you must choose one door.
 - Host opens $k$ doors and revealing goats.
 - You may or may not change your previously chosen door.
 
-The question is: is it always better to switch doors? Will it depend on $k$? 
+The question is: is it always better to switch doors? Will it depend on $k$?
 
 To answer this question analyticaly, first define the following events:
 
@@ -223,14 +223,14 @@ $$E_i = \text{ the car is behind door i. In this case, } i = 1, \ldots, n.$$
 
 Again, the $E_i$'s are independent from each other, because there is only $1$ car available.
 
-Note that, since the Host never opens the same door the player chose and also never opens the winning door, there is an upper bound for $k$, which is $n-2$, so $$ 0 \leq k \leq n-2.$$ 
+Note that, since the Host never opens the same door the player chose and also never opens the winning door, there is an upper bound for $k$, which is $n-2$, so $$ 0 \leq k \leq n-2.$$
 
 It can be assumed two facts:
 
 - The player chooses door $1$
 - The host opens doors $2, \ldots, k+1$
 
-This is because we can always rename the doors to get this result. For instance, if the player chooses door number $10$, we can rename it as door $1$ and door $1$ will become door $10$. This is just to avoid getting too complex on indices notations. In math terminology, it is usually said that we can do this *without loss of generality*, since it will not affect the final result. 
+This is because we can always rename the doors to get this result. For instance, if the player chooses door number $10$, we can rename it as door $1$ and door $1$ will become door $10$. This is just to avoid getting too complex on indices notations. In math terminology, it is usually said that we can do this *without loss of generality*, since it will not affect the final result.
 
 Now that there are $n$ doors, the probability that the car is behind door $1$ is $\frac{1}{n}$, i.e.,
 $$P(E_1) = \frac{1}{n}.$$
@@ -247,7 +247,7 @@ $$\bigcup_{i = 2}^{n} E_i.$$
 
 This works in the same fashion as a summation symbol, but the opeartion being performed is set union.
 
-So, we know that 
+So, we know that
 
 $$P\left(\bigcup_{i = 2}^{n} E_i\right) = \frac{n-1}{n}.$$
 
@@ -265,7 +265,7 @@ Let's take a look on the following image:
 
 If the player switches to a random available door, then they must choose one of the $k+2, k+3, \ldots, n-1, n$. Therefore, the probability of picking the car is:
 
-The probability of **not picking the car** in door $1$ $\left(P(E_1^c) = \frac{n-1}{n}\right)$ times the probability of picking the car **now**, which is $\frac{1}{n-k-1}$ because this is the number of remaining doors. 
+The probability of **not picking the car** in door $1$ $\left(P(E_1^c) = \frac{n-1}{n}\right)$ times the probability of picking the car **now**, which is $\frac{1}{n-k-1}$ because this is the number of remaining doors.
 
 So, the final probability is given by
 

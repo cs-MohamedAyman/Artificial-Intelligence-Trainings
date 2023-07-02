@@ -2,9 +2,9 @@
 # coding: utf-8
 
 # # Ungraded Lab - Summary Statistics
-# 
+#
 # In this notebook, you will be working with two distinct datasets. You will notice that relying solely on the main statistical measures such as mean, variance (or standard deviation), and correlation may not always effectively describe the datasets. Therefore, it is always advisable to supplement these measures with visualization techniques and/or other statistical measures to gain a deeper understanding of the data.
-# 
+#
 # You will be working with two well-known datasets: Anscombe's quartet and the Datasaurus Dozen dataset. These datasets are artificially generated and are used to illustrate the fact that some metrics can fail to capture important information present in a dataset. More specifically, these datasets are used to demonstrate how relying solely on metrics can sometimes be misleading. If you're interested, you can read more about Anscombe's quartet and the Datasaurus Dozen dataset at their respective [Wikipedia](https://en.wikipedia.org/wiki/Anscombe%27s_quartet) page and [Autodesk Research](https://damassets.autodesk.net/content/dam/autodesk/research/publications-assets/pdf/same-stats-different-graphs.pdf) article.
 
 # In[1]:
@@ -19,11 +19,11 @@ get_ipython().run_line_magic('matplotlib', 'widget')
 
 
 # # 1.1 First data set - Anscombe's quartet
-# 
+#
 # This first dataset was initially constructed by the statistician Francis Anscombe to demonstrate both the importance of graphing data when analyzing it, and the effect of outliers and other influential observations on statistical properties. (From wikipedia)
-# 
+#
 # Let us explore the first dataset. To do this, you will be utilizing the popular Python library called [pandas](https://pandas.pydata.org/), specifically its main object known as [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame).
-# 
+#
 # To read the dataset, which is stored in a `.csv file`, you can use the read_csv function in pandas. This function enables you to load a DataFrame immediately. For further information on this function, you can type help(pd.read_csv) in your code editor.
 
 # In[2]:
@@ -59,9 +59,9 @@ df_anscombe.groupby('group').describe()
 
 
 # The groups appear to be quite similar, as evidenced by the identical mean and standard deviation values for both `x` and `y` within each group.
-# 
+#
 # Additionally, you can analyze the correlation between `x` and `y` within each group.
-# 
+#
 # To obtain the correlation matrix for each group, you can follow the same approach as before. First, group the data by the `group` column using `DataFrame.groupby`, and then apply the `.corr` function.
 
 # In[6]:
@@ -71,7 +71,7 @@ df_anscombe.groupby('group').corr()
 
 
 # As observed, the correlation between `x` and `y` is identical within each group up to three decimal places. Moreover, the high correlation coefficient values suggest a strong linear correlation between `x` and `y` within each group.
-# 
+#
 # Despite the similarities in the statistical measures for the groups, it is still necessary to visualize the data to get a better understanding of the differences, if any.
 
 # In[7]:
@@ -81,18 +81,18 @@ utils.plot_anscombes_quartet()
 
 
 # Upon visualizing the data, the four groups appear to be quite distinct:
-# 
+#
 # 1. The first group shows a clear linear relationship between `x` and `y`.
 # 2. The second group, on the other hand, exhibits a non-linear pattern, indicating that the usual Pearson correlation may not be appropriate to describe the dataset.
 # 3. The third group would be linear if it were not for a single outlier.
 # 4. The fourth group demonstrates that `y` can have different values for the same `x`, suggesting that there is no clear relationship between `x` and `y`. However, there is also an outlier in this group.
-# 
+#
 # These four groups illustrate that summary statistics alone are not sufficient for investigating data. Visualizing the data, analyzing possible outliers, and identifying more complex relationships are essential to gain a better understanding of the underlying patterns in the data.
 
 # # 2 - Second data set - Datasaurus Dozen
-# 
-# The creation of Anscombe's quartet inspired other authors to generate datasets that have different relationships among its points but share the same summary statistics. One such dataset is the Datasaurus Dozen, which was created by AutoDesk. 
-# 
+#
+# The creation of Anscombe's quartet inspired other authors to generate datasets that have different relationships among its points but share the same summary statistics. One such dataset is the Datasaurus Dozen, which was created by AutoDesk.
+#
 # In this case, you will take a different approach. Instead of analyzing summary statistics and then plotting the data points, you will compare two datasets from the dozen and compute their statistics.
 
 # In[8]:

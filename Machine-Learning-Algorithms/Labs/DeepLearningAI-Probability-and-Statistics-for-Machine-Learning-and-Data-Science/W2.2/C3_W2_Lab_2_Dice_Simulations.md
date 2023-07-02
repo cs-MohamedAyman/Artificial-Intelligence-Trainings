@@ -2,7 +2,7 @@
 
 Welcome! In this lab you will see how you can use numpy to simulate different scenarios involving rolling dices from rolling a single die up to doing multiple rolls and summing the result. You will also see how to handle situations in which one of the sides of the die is loaded (it has a greater probability of landing on that side comparing to the rest).
 
-Let's get started! 
+Let's get started!
 
 
 ```python
@@ -99,9 +99,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](images/output_11_0.png)
-    
+
 
 
 You probably didn't get a distribution that looks uniform (since the results are random). This happened because you are only simulating 20 rolls so far. Now try doing the same but for 20000 rolls:
@@ -123,20 +123,20 @@ plt.show()
 
 
 
-    
+
 ![png](images/output_13_1.png)
-    
+
 
 
 Does this plot and the metrics of mean and variance allign with what you have learned about the uniform distribution during the course?
 
-Simulations are a great way of contrasting results against analytical solutions. For example, in this case the theoretical mean and variance are 3.5 and 2.916 respectively (you can check the formulas to get this results [here](https://en.wikipedia.org/wiki/Discrete_uniform_distribution)). The important thing to keep in mind is that the more simulations you perform the closer your results will be to the analytical values so always choose an appropriate number of simulations! 
+Simulations are a great way of contrasting results against analytical solutions. For example, in this case the theoretical mean and variance are 3.5 and 2.916 respectively (you can check the formulas to get this results [here](https://en.wikipedia.org/wiki/Discrete_uniform_distribution)). The important thing to keep in mind is that the more simulations you perform the closer your results will be to the analytical values so always choose an appropriate number of simulations!
 
 Numpy is quite fast so performing 20 thousand runs is done fairly quick.
 
 ## Summing the result of rolling twice
 
-Now you want to throw the die twice and record the sum of the two rolls. For this you can do as before and save all results of the first roll in a numpy array but this time you will have a second array that saves the results for the second rolls. 
+Now you want to throw the die twice and record the sum of the two rolls. For this you can do as before and save all results of the first roll in a numpy array but this time you will have a second array that saves the results for the second rolls.
 
 To get the sum you can simply sum the two arrays. This is possible because numpy allows for vectorized operations such as this one. When you sum two numpy arrays you will get a new array that includes the element-wise sum of the elements in the arrays you summed up.
 
@@ -168,22 +168,22 @@ plt.show()
 
     mean of first_rolls: 3.51
     variance of first_rolls: 2.91
-    
+
     mean of second_rolls: 3.50
     variance of second_rolls: 2.90
-    
+
     mean of sum_of_rolls: 7.01
     variance of sum_of_rolls: 5.87
-    
+
     covariance between first and second roll:
     [[2.91244562 0.02699135]
      [0.02699135 2.90292915]]
 
 
 
-    
+
 ![png](images/output_16_1.png)
-    
+
 
 
 The resulting plot looks pretty Gaussian, as you might expect. Notice that the covariance between the first and second rolls is very close to zero since these two processes are independant of one another.
@@ -201,19 +201,19 @@ To see it in action, code a function that returns the probabilities of the die l
 
 ```python
 def load_dice(n_sides, loaded_number):
-    
+
     # All probabilities are initially the same
     probs = np.array([1/(n_sides+1) for _ in range(n_sides)])
-    
+
     # Assign the loaded side a probability that is twice as the other ones
     probs[loaded_number-1] = 1 - sum(probs[:-1])
-    
+
     # Check that all probabilities sum up to 1
     if not np.isclose(sum(probs), 1):
         print("All probabilities should add up to 1")
         return
-    
-    return probs 
+
+    return probs
 ```
 
 Before using this function, check how the probabilities of a fair die would look like:
@@ -230,9 +230,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](images/output_21_0.png)
-    
+
 
 
 Now get the probabilities by using the `load_dice` function. Try changing the loaded side!
@@ -249,9 +249,9 @@ plt.show()
 ```
 
 
-    
+
 ![png](images/output_23_0.png)
-    
+
 
 
 Now, feed the `probs_loaded_die` array into `np.random.choice` and see how this affect the metrics and plot:
@@ -279,22 +279,22 @@ plt.show()
 
     mean of first_rolls: 3.29
     variance of first_rolls: 2.78
-    
+
     mean of second_rolls: 3.29
     variance of second_rolls: 2.77
-    
+
     mean of sum_of_rolls: 6.58
     variance of sum_of_rolls: 5.60
-    
+
     covariance between first and second roll:
     [[2.78373612 0.02459084]
      [0.02459084 2.76539455]]
 
 
 
-    
+
 ![png](images/output_25_1.png)
-    
+
 
 
 Now the histogram is skewed towards some values since some sums are now more likely than others. Try changing the loaded side and see how the histogram changes!
@@ -338,22 +338,22 @@ plt.show()
 
     mean of first_rolls: 3.51
     variance of first_rolls: 2.89
-    
+
     mean of second_rolls: 1.75
     variance of second_rolls: 4.49
-    
+
     mean of sum_of_rolls: 5.26
     variance of sum_of_rolls: 12.57
-    
+
     covariance between first and second roll:
     [[2.89027055 2.5950483 ]
      [2.5950483  4.49244906]]
 
 
 
-    
+
 ![png](images/output_28_1.png)
-    
+
 
 
 Looks like all of the predictions of this new scenario indeed happened. Notice that the covariance now is nowhere near zero since there is a dependency between the first and the second roll!

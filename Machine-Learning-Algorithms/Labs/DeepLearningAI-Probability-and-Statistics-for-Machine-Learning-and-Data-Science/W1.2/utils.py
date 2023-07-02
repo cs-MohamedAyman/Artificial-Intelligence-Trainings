@@ -54,7 +54,7 @@ class monty_hall_game:
         self.ilegal_move = False
 
     def click_plot(self, event):
-        
+
         if event.inaxes in [self.ax]:
             if self.game_over:
                 self.start()
@@ -218,7 +218,7 @@ class monty_hall_game:
 
         return door_to_open
 
-    
+
 
 
 def success_rate_plot(f):
@@ -243,7 +243,7 @@ def success_rate_plot(f):
         msg = "always" if switch else "never"
         ax.set_title(f"Win rate if you {msg} switch doors ({n_iterations} simulations)")
         plt.show()
-        
+
     def _plot_generalized(switch, n_iterations, n = 3, k = 1):
         wins = 0
         # iterations = 1000
@@ -283,17 +283,17 @@ def success_rate_plot(f):
         description="Switch Doors?",
         disabled=False,
     )
-    
+
     if f.__qualname__ == 'monty_hall':
-        
+
         interact_manual(
         _plot, switch=strategy_selection, n_iterations=n_iterations_selection,
     )
-        
-    
-        
+
+
+
     if f.__qualname__ == 'generalized_monty_hall':
-        
+
         disabled = False
 
         n_selection = widgets.SelectionSlider(
@@ -302,15 +302,15 @@ def success_rate_plot(f):
         description="n",
         disabled=disabled,
     )
-        
-        
+
+
         k_selection = widgets.SelectionSlider(
         options=range(0,99),
         value=1,
         description="k",
         disabled=disabled,
     )
-        
+
         interact_manual(
         _plot_generalized, switch=strategy_selection, n_iterations=n_iterations_selection, n = n_selection, k = k_selection
     )

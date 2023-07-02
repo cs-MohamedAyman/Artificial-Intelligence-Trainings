@@ -20,7 +20,7 @@ All of these problems share a similar setting. You have a classroom full of stud
 You can think of these problems in two ways:
    - What is the minimum number of students `n` that need to be in the classroom to have a matching birthday with a given probability?
    - Given `n` what is the probability of having a match?
-    
+
 Both ways model the situation from different angles but they are essentially covering the same.
 
 ## Play the game of matching your birthday
@@ -64,17 +64,17 @@ Before taking a look at the analytical solution you will try to solve it by crea
 
 ```python
 def simulate(problem_func, n_students=365, n_simulations=1000):
-    
+
     # Initialize the counter of matches at 0
     matches = 0
-    
+
     # Run the simulation for the desired number of times
     for _ in range(n_simulations):
-        
+
         # If there is a match in the classroom add 1 to the counter of matches
         if problem_func(n_students):
             matches += 1
-    
+
     # Return the ratio of number of matches / number of simulations
     return matches/n_simulations
 ```
@@ -82,25 +82,25 @@ def simulate(problem_func, n_students=365, n_simulations=1000):
 This function returns the simulated probability for a given problem when you pass to it the number of students and the number of simulations and it has these two properties:
 
    - The higher the number of students the higher the probability of a match.
-   - The higher the number of simulations the more accurate the simulated probability will be (This fact will be discussed further in Week 3. This is known as the Central Limit Theorem). 
+   - The higher the number of simulations the more accurate the simulated probability will be (This fact will be discussed further in Week 3. This is known as the Central Limit Theorem).
 
 This is pretty cool but how do you use this helper function? You need to pass another function to it that models the situation at hand. This other function should have two criteria so that `simulate` works as expected:
 
    - It should receive the number of students as input.
    - It should return True if there was a match or False otherwise.
-    
+
 You can create a function that models problem number 1 by running the following cell:
 
 
 ```python
 def problem_1(n_students):
-    
+
     # Predefine a specific birthday
     predef_bday = np.random.randint(0, 365)
-    
+
     # Generate birthdays for every student
     gen_bdays = np.random.randint(0, 365, (n_students))
-    
+
     # Check if predefined bday is among students
     return predef_bday in gen_bdays
 ```
@@ -146,9 +146,9 @@ Remember that this approach is a simulation and thus you are generating simulate
 
 Now that you have built a stronger intuition, let's calculate explicitily the probability $P$ that at least one student in the room has the birthday the same as the pre-defined date. It is clear that $P = P(n)$, i.e., the value for $P$ depends on the number of students in the room and, as $n$ become large, $P(n)$ must become closer to $1$. With a formula for $P(n)$ we can then find the minimum $n$ such that $P(n) \geq 0.5$. Let's suppose that a year has $365$ days.
 
-Let's consider $D$ the pre-defined birthday and suppose a student is selected at random. 
+Let's consider $D$ the pre-defined birthday and suppose a student is selected at random.
 
-Defining the event $S_i$ as the $i$-th student has birthday in the day $D$. Then $P(S_i) = \frac{1}{365}$, because there are $365$ equally likely possibilities for their birthday. So, using the **complement rule**, the probability that this student's birthday isn't day $D$ is $P(S_i^c) = 1 - P(S_i) = 1 - \frac{1}{365}$. 
+Defining the event $S_i$ as the $i$-th student has birthday in the day $D$. Then $P(S_i) = \frac{1}{365}$, because there are $365$ equally likely possibilities for their birthday. So, using the **complement rule**, the probability that this student's birthday isn't day $D$ is $P(S_i^c) = 1 - P(S_i) = 1 - \frac{1}{365}$.
 
 Note that this probability is the same for any student and we can fairily assume that each student's birthday is independent from each other. Consider the event $\mathcal{S}$ the desired event, i.e., at least one student has birthday in day $D$. Note that:
 
@@ -188,7 +188,7 @@ Now, using a calculator we can easily find that $\ln{2} \approx 0.693$ and $\ln{
 
 $$n \cdot -0.003 \leq -0.693,$$
 
-which is equivalent to $n \geq \frac{0.693}{0.003} = 253$. 
+which is equivalent to $n \geq \frac{0.693}{0.003} = 253$.
 
 ## Second Problem
 
@@ -203,19 +203,19 @@ Run the next cells to find out!
 
 ```python
 def problem_2(n_students):
-    
+
     # Generate birthdays for every student
     gen_bdays = np.random.randint(0, 365, (n_students))
-    
+
     # Pick one student at random
     rnd_index = np.random.randint(0, len(gen_bdays))
-    
+
     # Get the bday from the selected student
     rnd_bday = gen_bdays[rnd_index]
-    
+
     # Take the bday out of the pool of bdays (otherwise there is always a match)
     remaining_bdays = np.delete(gen_bdays, rnd_index, axis=0)
-    
+
     # Check if another student shares the same bday
     return rnd_bday in remaining_bdays
 ```
@@ -289,14 +289,14 @@ Now you should have a hypothesis of the number of students in the classroom need
 
 ```python
 def problem_3(n_students):
-    
+
     # Generate birthdays for every student
     gen_bdays = np.random.randint(0, 365, (n_students))
-    
+
     # Get array containing unique bdays
     unique_bdays = np.array(list(set(gen_bdays)))
-    
-    # Check that both the original and unique arrays have the same length 
+
+    # Check that both the original and unique arrays have the same length
     # (if so then no two students share the same bday)
     return len(unique_bdays) != len(gen_bdays)
 ```
@@ -343,7 +343,7 @@ Note that we could just write a small program in Python to compute this value fo
 
 We will use the following approximation: $1 - x \approx e^{-x}$ for $x$ small and positive. We can re-write $Q$ as
 
-$$Q = 1 \cdot \frac{364}{365} \cdot \frac{363}{365} \cdot \ldots \cdot \frac{365 - (n-2)}{365} \cdot \frac{365 - (n-1)}{365} 
+$$Q = 1 \cdot \frac{364}{365} \cdot \frac{363}{365} \cdot \ldots \cdot \frac{365 - (n-2)}{365} \cdot \frac{365 - (n-1)}{365}
     = \left(1 - \frac{1}{365} \right) \cdot \left(1 - \frac{2}{365} \right) \cdot \ldots \cdot \left(1 - \frac{n-2}{365} \right) \cdot \left(1 - \frac{n-1}{365} \right).$$
 
 Thus, using the approximation:
@@ -371,13 +371,13 @@ The fourth and final one is similar to the third problem but with the difference
 
 ```python
 def problem_4(n_students):
-    
+
     # Generate birthdays for every student in classroom 1
     gen_bdays_1 = np.random.randint(0, 365, (n_students))
-    
+
     # Generate birthdays for every student in classroom 2
     gen_bdays_2 = np.random.randint(0, 365, (n_students))
-    
+
     # Check for any match between both classrooms
     return np.isin(gen_bdays_1, gen_bdays_2).any()
 ```
@@ -404,7 +404,7 @@ utils.plot_simulated_probs(simulated_probs_4, utils.small_classroom_sizes)
 
 ## Analytical solution
 
-The solution to this problem is similar to the first one. Now, instead of only **one** date, there are $n$ dates to compare. 
+The solution to this problem is similar to the first one. Now, instead of only **one** date, there are $n$ dates to compare.
 Remember that if we have only one date $D$ to compare than the probability, let's say $Q_1$ of having **no** student with birthday $D$ is $Q_1 = (1 - \frac{1}{365})^n$ (the complement of $P(\mathcal{S})$ in that case). Now we proceed as problem three, by having independent samples of students. For each student sampled, the probability $Q_i$ is $(1 - \frac{1}{365})^n$, so the probability of no student matches any of the $n$ given dates is therefore
 
 $$Q = Q_1 \cdot Q_2 \cdot \ldots \cdot Q_{n-1} \cdot Q_n = (1 - \frac{1}{365})^{n^2}$$
@@ -413,7 +413,7 @@ Using the approximation $1 - x \approx e^{-x}$ for $x$ small,
 
 $$Q \approx e^{-\frac{n^2}{365}}$$
 
-Therefore, $$P(n) \approx 1 - e^{-\frac{n^2}{365}}.$$ 
+Therefore, $$P(n) \approx 1 - e^{-\frac{n^2}{365}}.$$
 
 Thus, $P(n) \geq \frac{1}{2}$ if $n \geq \sqrt{\ln 2 \cdot 365} \approx 15.9 \geq 15$
 

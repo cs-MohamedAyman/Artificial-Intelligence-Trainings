@@ -10,7 +10,7 @@ from ipywidgets import interact_manual
 class your_bday:
     def __init__(self) -> None:
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
-        
+
         self.fig = fig
         self.ax = ax1
         self.ax_hist = ax2
@@ -52,7 +52,7 @@ class your_bday:
         # if not np.isnan(self.y[gen_bday]):
         if gen_bday == self.bday_index:
             self.match = True
-    
+
     def add_students(self):
 
         if not self.bday_str:
@@ -95,8 +95,8 @@ def plot_simulated_probs(sim_probs, class_size):
     ax.legend()
     plt.show()
 
-    
-    
+
+
 class third_bday_problem:
     def __init__(self) -> None:
         fig, axes = plt.subplot_mosaic(

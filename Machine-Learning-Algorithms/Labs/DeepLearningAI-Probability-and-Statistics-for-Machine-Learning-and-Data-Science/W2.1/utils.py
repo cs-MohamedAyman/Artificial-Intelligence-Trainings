@@ -23,7 +23,7 @@ def plot_anscombes_quartet():
             ax.set_xlabel('x')
             ax.set_ylabel('y')
             i+=1
-        
+
 def display_widget():
 
     dropdown_graph_1 = widgets.Dropdown(
@@ -32,14 +32,14 @@ def display_widget():
     description='Data set 1: ',
     disabled=False,
 )
-    
+
     statistics_graph_1 = widgets.Button(
     value=False,
     description='Compute stats',
     disabled=False,
     button_style='',
     tooltip='Description',
-    icon='' 
+    icon=''
 )
 
     dropdown_graph_2 = widgets.Dropdown(
@@ -48,14 +48,14 @@ def display_widget():
     description='Data set 2: ',
     disabled=False,
 )
-    
+
     statistics_graph_2 = widgets.Button(
     value=False,
     description='Compute stats',
     disabled=False,
     button_style='',
     tooltip='Description',
-    icon='' 
+    icon=''
 )
     plotted_stats_graph_1 = None
     plotted_stats_graph_2 = None
@@ -76,15 +76,15 @@ def display_widget():
     ax_2.set_ylabel('y')
     ax_text_1.axis('off')
     ax_text_2.axis('off')
-    
+
     def dropdown_choice(value, plotted_stats, ax_text, sc):
         if value.new != plotted_stats:
             ax_text.clear()
             ax_text.axis('off')
         sc.set_offsets(df_datasaurus.groupby('group').get_group(value.new)[['x', 'y']])
         fig.canvas.draw_idle()
-    
-        
+
+
     def get_stats(value, plotted_stats, ax_text, dropdown, val):
         value = dropdown.value
         if value == plotted_stats:
@@ -103,18 +103,18 @@ def display_widget():
             plotted_stats_graph_1 = value
         if val == 2:
             plotted_stats_graph_2 = value
-        
-        
-        
+
+
+
 
     dropdown_graph_1.observe(lambda value: dropdown_choice(value,plotted_stats_graph_1, ax_text_1, sc_1), names = 'value')
     statistics_graph_1.on_click(lambda value: get_stats(value, plotted_stats_graph_1, ax_text_1, dropdown_graph_1,1))
     dropdown_graph_2.observe(lambda value: dropdown_choice(value,plotted_stats_graph_2, ax_text_2, sc_2), names = 'value')
-    statistics_graph_2.on_click(lambda value: get_stats(value, plotted_stats_graph_2, ax_text_2, dropdown_graph_2,2))    
+    statistics_graph_2.on_click(lambda value: get_stats(value, plotted_stats_graph_2, ax_text_2, dropdown_graph_2,2))
     graph_1_box = HBox([dropdown_graph_1, statistics_graph_1])
     graph_2_box = HBox([dropdown_graph_2, statistics_graph_2])
     display(VBox([graph_1_box,graph_2_box]))
-    
+
 
 def plot_datasaurus():
 

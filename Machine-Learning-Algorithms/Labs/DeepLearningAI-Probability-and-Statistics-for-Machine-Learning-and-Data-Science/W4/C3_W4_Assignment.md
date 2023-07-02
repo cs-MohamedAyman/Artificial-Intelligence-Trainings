@@ -143,17 +143,17 @@ print(f"{len(variation_sd_data)} users saw the new website with an average durat
 ```
 
     2069 users saw the original website with an average duration of 32.92 minutes
-    
+
     2117 users saw the new website with an average duration of 33.83 minutes
 
 
-Notice that the split is not perfectly balanced. This is common in AB testing as there is randomness associated with the way the users are assigned to each group. 
+Notice that the split is not perfectly balanced. This is common in AB testing as there is randomness associated with the way the users are assigned to each group.
 
 At first glance it looks like the change to the background did in fact drive users to stay longer on your website. However you know better than driving conclusions at face value out of this data so you decide to perform a hypothesis test to know if there is a significant difference between the **means** of these two segments. You can do this by computing the t-statistic and using the null hypothesis that there is **not** a statistically significant difference between the means of the two samples:
 
 $$t = \frac{(\bar{x}_{1} - \bar{x}_{2}) - (\mu_1 - \mu_2)}{\sqrt{\frac{s_{1}^2}{n_1} + \frac{s_{2}^2}{n_2}}}$$
 
- 
+
 
 Notice that by computing the metric at a user level you ensure that the independence criteria is met since each user is independent of one another. Also, although the data is not strictly normal you have a large enough sample size to justify the use of the t-test.
 
@@ -166,12 +166,12 @@ class estimation_metrics_cont:
     n: int
     xbar: float
     s: float
-        
+
     def __repr__(self):
         return f"sample_params(n={self.n}, xbar={self.xbar:.3f}, s={self.s:.3f})"
 ```
 
-This class will hold the information for $n$, $\bar{x}$ and $s$. 
+This class will hold the information for $n$, $\bar{x}$ and $s$.
 
 ## Exercise 1: compute_continuous_metrics
 
@@ -192,15 +192,15 @@ def compute_continuous_metrics(data):
     Returns:
         estimation_metrics_cont: The metrics saved in a dataclass instance.
     """
-    
+
     ### START CODE HERE ###
-    metrics = estimation_metrics_cont( 
+    metrics = estimation_metrics_cont(
         n=len(data),
         xbar=np.mean(data),
         s=np.std(data, ddof=1)
     )
     ### END CODE HERE ###
-    
+
     return metrics
 ```
 
@@ -219,9 +219,9 @@ print(f"n={variation_metrics.n}, xbar={variation_metrics.xbar:.2f} and s={variat
 ```
 
     n=5, xbar=3.00 and s=1.58 for example array
-    
+
     n=2069, xbar=32.92 and s=17.54 for control data
-    
+
     n=2117, xbar=33.83 and s=18.24 for variation data
 
 
@@ -241,26 +241,26 @@ Another important piece of information when performing a t-test is the degrees o
 
 $$\text{Degrees of freedom } = \frac{\left[\frac{s_{1}^2}{n_1} + \frac{s_{2}^2}{n_2} \right]^2}{\frac{(s_{1}^2/n_1)^2}{n_1-1} + \frac{(s_{2}^2/n_2)^2}{n_2-1}}$$
 
-Complete the `degrees_of_freedom` function below so that given two samples it will return the degrees of freedom. Notice that this value does not necessarily needs to be an integer and can be a float. 
+Complete the `degrees_of_freedom` function below so that given two samples it will return the degrees of freedom. Notice that this value does not necessarily needs to be an integer and can be a float.
 
 Hints:
-- Use the `compute_continuous_metrics` function you previously coded to compute the metrics for each sample.  
+- Use the `compute_continuous_metrics` function you previously coded to compute the metrics for each sample.
 
-<!-- -->   
+<!-- -->
 
 - You can use [np.square](https://numpy.org/doc/stable/reference/generated/numpy.square.html) to get the square of a value.
 
-<!-- -->   
+<!-- -->
 
 
 - In this context the suffix 1 denotes the control data, while 2 denotes the variation data (this applies to all functions in this assignment).
 
-<!-- -->   
+<!-- -->
 
 
 - To retrieve information from the metrics dataclass you can use the dot (.) notation. For example if you have defined the following variable `control_metrics = compute_continuous_metrics(control_sample)`, you can get $s$ by using the expression `control_metrics.s`
 
-<!-- -->   
+<!-- -->
 
 
 - You can assign multiple values in Python in the same line. For example if you have a class with attributes $a$, $b$ and $c$ you can do something like `a1, b1, c1 = class.a, class.b, class.c`. This sometimes can make code easier to read.
@@ -277,15 +277,15 @@ def degrees_of_freedom(control_metrics, variation_metrics):
     Returns:
         numpy.float: The degrees of freedom.
     """
-    
+
     ### START CODE HERE ###
     n1, s1 = control_metrics.n, control_metrics.s
     n2, s2 = variation_metrics.n, variation_metrics.s
 
-    dof = np.square((s1**2 / n1 + s2**2 / n2)) / ((s1**2 / n1)**2 / (n1 - 1) + (s2**2 / n2)**2 / (n2 - 1))    
+    dof = np.square((s1**2 / n1 + s2**2 / n2)) / ((s1**2 / n1)**2 / (n1 - 1) + (s2**2 / n2)**2 / (n2 - 1))
     ### END CODE HERE ###
-    
-    
+
+
     return dof
 ```
 
@@ -301,7 +301,7 @@ print(f"DoF for AB test samples: {dof:.2f}")
 ```
 
     DoF for example arrays: 2.88
-    
+
     DoF for AB test samples: 4182.97
 
 
@@ -322,11 +322,11 @@ $$t = \frac{(\bar{x}_{1} - \bar{x}_{2}) - (\mu_1 - \mu_2)}{\sqrt{\frac{s_{1}^2}{
 Hints:
 - You can use [np.sqrt](https://numpy.org/doc/stable/reference/generated/numpy.sqrt.html) to compute the squared root of a value.
 
-<!-- -->   
+<!-- -->
 
 - The value for the difference of $(\mu_1 - \mu_2)$ should be replaced by the value of this difference under the null hypothesis.
 
- 
+
 
 
 
@@ -341,14 +341,14 @@ def t_statistic_diff_means(control_metrics, variation_metrics):
     Returns:
         numpy.float: The value of the t-statistic.
     """
-    
+
     ### START CODE HERE ###
     n1, xbar1, s1 = control_metrics.n, control_metrics.xbar, control_metrics.s
     n2, xbar2, s2 = variation_metrics.n, variation_metrics.xbar, variation_metrics.s
 
     t = (xbar1 - xbar2) / np.sqrt((s1 ** 2) / n1 + (s2 ** 2) / n2)
     ### END CODE HERE ###
-    
+
     return t
 ```
 
@@ -364,7 +364,7 @@ print(f"t statistic for AB test: {t:.2f}")
 ```
 
     t statistic for example arrays: -3.27
-    
+
     t statistic for AB test: -1.64
 
 
@@ -385,12 +385,12 @@ In this case the p-value represents the probability of obtaining a value of the 
 Hints:
 - You can use the `cdf` method from the [stats.t](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.t.html) class to compute the p-value given the degrees of freedom. Don't forget to multiply your result by 2 since this is a two-sided test.
 
-<!-- -->   
+<!-- -->
 
 
 - When passing the value of the t-statistic to the `cdf` function, you should provide the absolute value. You can achieve this by using Python's built-in `abs` function.
 
-<!-- -->   
+<!-- -->
 
 
 - If the p-value is lower to `alpha` then you should reject the null hypothesis.
@@ -408,7 +408,7 @@ def reject_nh_t_statistic(t_statistic, dof, alpha=0.05):
     Returns:
         bool: True if the null hypothesis should be rejected. False otherwise.
     """
-    
+
     reject = False
     ### START CODE HERE ###
     p_value = 2 * (1 - stats.t.cdf(abs(t_statistic), df=dof))
@@ -416,7 +416,7 @@ def reject_nh_t_statistic(t_statistic, dof, alpha=0.05):
     if p_value < alpha:
         reject = True
     ### END CODE HERE ###
-        
+
     return reject
 ```
 
@@ -434,7 +434,7 @@ print(f"There is{msg} enough statistical evidence against H0.\nIt can be conclud
 ```
 
     The null hypothesis can be rejected at the 0.05 level of significance: False
-    
+
     There is not enough statistical evidence against H0.
     It can be concluded that there is not a statistically significant difference between the means of the two samples.
 
@@ -492,7 +492,7 @@ In case you are wondering about this computation but for the continuos metrics c
 
 <details>
   <summary>➤ 🤖</summary>
-  
+
 Sample Size Needed for Comparing the Means of Two Normally Distributed Samples of Equal Size Using a Two-Sided Test with Significance Level $\alpha$ and Power $1 - \beta$.
 
 $$ n = \frac{\left(\sigma_{1}^{2} + \sigma_{2}^2 \right) \left(z_{1-\alpha/2} + z_{1-\beta} \right)^2}{\Delta^2} = \text{sample size for each group}$$
@@ -598,7 +598,7 @@ print(f"{len(variation_data)} users saw the app with the new feature with an ave
 ```
 
     4632 users saw the original app with an average CVR of 0.1244
-    
+
     4728 users saw the app with the new feature with an average CVR of 0.1519
 
 
@@ -619,12 +619,12 @@ class estimation_metrics_prop:
     n: int
     x: int
     p: float
-        
+
     def __repr__(self):
         return f"sample_params(n={self.n}, x={self.x}, p={self.p:.3f})"
 ```
 
-This class will hold the information for $n$, $x$ and $p$. 
+This class will hold the information for $n$, $x$ and $p$.
 
 ## Exercise 5: compute_proportion_metrics
 
@@ -647,15 +647,15 @@ def compute_proportion_metrics(data):
     Returns:
         estimation_metrics_prop: The metrics saved in a dataclass instance.
     """
-    
+
     ### START CODE HERE ###
-    metrics = estimation_metrics_prop( 
+    metrics = estimation_metrics_prop(
         n=len(data),
         x=data.sum(),
         p=data.mean()
     )
     ### END CODE HERE ###
-    
+
     return metrics
 ```
 
@@ -673,9 +673,9 @@ print(f"n={variation_metrics.n}, x={variation_metrics.x} and p={variation_metric
 ```
 
     n=4, x=2 and p=0.5000 for sample array
-    
+
     n=4632, x=576 and p=0.1244 for control data
-    
+
     n=4728, x=718 and p=0.1519 for variation data
 
 
@@ -693,7 +693,7 @@ n=4728, x=718 and p=0.1519 for variation data
 
 Now that you have a way of computing all necessary metrics for each sample it is time to create a way to compute the pooled proportion. For this fill the `pooled_proportion` function below. Notice that this function will receive two instances of the `estimation_metrics_prop` class.
 
-Remember that the pooled proportion can be computed like this: 
+Remember that the pooled proportion can be computed like this:
 
 $\hat{p} = \frac{x_1 + x_2}{n_1 + n_2}$
 
@@ -709,14 +709,14 @@ def pooled_proportion(control_metrics, variation_metrics):
     Returns:
         numpy.float: The pooled proportion.
     """
-    
+
     ### START CODE HERE ###
     x1, n1 = control_metrics.x, control_metrics.n
     x2, n2 = variation_metrics.x, variation_metrics.n
     pp = (x1 + x2) / (n1 + n2)
     return pp
     ### END CODE HERE ###
-    
+
     return pp
 ```
 
@@ -733,7 +733,7 @@ print(f"pooled proportion for AB test samples: {pp:.4f}")
 ```
 
     pooled proportion for example arrays: 0.7143
-    
+
     pooled proportion for AB test samples: 0.1382
 
 
@@ -768,14 +768,14 @@ def z_statistic_diff_proportions(control_metrics, variation_metrics):
     Returns:
         numpy.float: The z-statistic.
     """
-    
+
     ### START CODE HERE ###
     pp = pooled_proportion(control_metrics, variation_metrics)
     n1, p1 = control_metrics.n, control_metrics.p
     n2, p2 = variation_metrics.n, variation_metrics.p
     z = (p1 - p2) / np.sqrt(pp * (1 - pp) * ((1 / n1) + (1 / n2)))
     ### END CODE HERE ###
-    
+
     return z
 ```
 
@@ -791,7 +791,7 @@ print(f"z statistic for AB test: {z:.4f}")
 ```
 
     z statistic for example arrays: -0.2415
-    
+
     z statistic for AB test: -3.8551
 
 
@@ -811,12 +811,12 @@ Complete the `reject_nh_z_statistic` function below. This function should return
 Hints:
 - You can use the `cdf` method from the [stats.norm](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html) class to compute the p-value. Don't forget to multiply your result by 2 since this is a two-sided test.
 
-<!-- -->   
+<!-- -->
 
 
 - When passing the value of the z-statistic to the `cdf` function, you should provide the absolute value. You can achieve this by using Python's built-in `abs` function.
 
-<!-- -->   
+<!-- -->
 
 
 - If the p-value is lower to `alpha` then you should reject the null hypothesis.
@@ -833,15 +833,15 @@ def reject_nh_z_statistic(z_statistic, alpha=0.05):
     Returns:
         bool: True if the null hypothesis should be rejected. False otherwise.
     """
-    
+
     reject = False
     ### START CODE HERE ###
     p_value = 2 * (1 - stats.norm.cdf(np.abs(z_statistic)))
-    
+
     if p_value < alpha:
         reject = True
     ### END CODE HERE ###
-        
+
     return reject
 ```
 
@@ -859,7 +859,7 @@ print(f"There is{msg} enough statistical evidence against H0.\nThus it can be co
 ```
 
     The null hypothesis can be rejected at the 0.05 level of significance: True
-    
+
     There is enough statistical evidence against H0.
     Thus it can be concluded that there is a statistically significant difference between the two proportions.
 
@@ -898,14 +898,14 @@ def confidence_interval_proportion(metrics, alpha=0.05):
     Returns:
         (numpy.float, numpy.float): The lower and upper bounds of the confidence interval.
     """
-    
+
     ### START CODE HERE ###
     n, p = metrics.n, metrics.p
     distance = stats.norm.ppf(1 - alpha / 2) * np.sqrt(p * (1 - p) / n)
     lower = p - distance
     upper = p + distance
     ### END CODE HERE ###
-    
+
     return lower, upper
 ```
 
@@ -921,7 +921,7 @@ print(f"Confidence interval for variation group: [{v_lower:.3f}, {v_upper:.3f}]"
 ```
 
     Confidence interval for control group: [0.115, 0.134]
-    
+
     Confidence interval for variation group: [0.142, 0.162]
 
 
@@ -952,6 +952,6 @@ utils.AB_test_dashboard(z_statistic_diff_proportions, reject_nh_z_statistic)
 
 **Congratulations on finishing this assignment!**
 
-Now you have created all the required steps to perform an AB test for continuous and proportion-based metrics. 
+Now you have created all the required steps to perform an AB test for continuous and proportion-based metrics.
 
 **This is the last assignment of the course and the specialization so give yourself a pat on the back for such a great accomplishment! Nice job!!!!**
