@@ -32,17 +32,3 @@ Signal Processing and Data Compression Training for computer science students.
 
 ## [`Udacity Courses`](https://github.com/cs-MohamedAyman/elearning-platforms/blob/master/udacity-courses/artificial-intelligence/README.md)
 
-<br>
-<a href="https://github.com/cs-MohamedAyman/data-science-case-studies/blob/master/README.md"><img align="right" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-logos/data-science-case-studies.png"></img></a>
-
-## [`Data Science Case Studies`](https://github.com/cs-MohamedAyman/data-science-case-studies/blob/master/README.md)
-
-<br>
-<a href="https://github.com/cs-MohamedAyman/educational-projects/blob/master/artificial-intelligence/README.md"><img align="right" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-logos/educational-projects.png"></img></a>
-
-## [`Educational Projects`](https://github.com/cs-MohamedAyman/educational-projects/blob/master/artificial-intelligence/README.md)
-
-<br>
-<a href="https://github.com/cs-MohamedAyman/job-interviews/blob/master/artificial-intelligence/README.md"><img align="right" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-logos/job-interviews.png"></img></a>
-
-## [`Job Interviews`](https://github.com/cs-MohamedAyman/job-interviews/blob/master/artificial-intelligence/README.md)
