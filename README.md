@@ -10,16 +10,16 @@
 <a href="/artificial-intelligence-algorithms.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-logos/soft-computing.png"></img></a>
 <a href="/artificial-intelligence-algorithms.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-logos/computational-cognitive-science.png"></img></a>
 </td>
-<td align="center"><a href="/machine-learning-algorithms.md">Machine Learning Algorithms Training</a><br><br>
-<a href="/machine-learning-algorithms.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-logos/machine-learning.png"></img></a>
-<a href="/machine-learning-algorithms.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-logos/supervised-learning.png"></img></a>
-<a href="/machine-learning-algorithms.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-logos/unsupervised-learning.png"></img></a>
+<td align="center"><a href="https://github.com/cs-MohamedAyman/Machine-Learning-Algorithms/blob/master/README.md">Machine Learning Algorithms Training</a><br><br>
+<a href="https://github.com/cs-MohamedAyman/Machine-Learning-Algorithms/blob/master/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-logos/machine-learning.png"></img></a>
+<a href="https://github.com/cs-MohamedAyman/Machine-Learning-Algorithms/blob/master/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-logos/supervised-learning.png"></img></a>
+<a href="https://github.com/cs-MohamedAyman/Machine-Learning-Algorithms/blob/master/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-logos/unsupervised-learning.png"></img></a>
 </td>
         </tr>
     </tbody>
     <tbody>
 <td align="center"><a href="/artificial-intelligence-algorithms.md"><img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-covers/3-1.png"></img></a></td>
-<td align="center"><a href="/machine-learning-algorithms.md">       <img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-covers/3-2.png"></img></a></td>
+<td align="center"><a href="https://github.com/cs-MohamedAyman/Machine-Learning-Algorithms/blob/master/README.md">       <img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-covers/3-2.png"></img></a></td>
     </tbody>
     <tbody>
         <tr>
