@@ -10,23 +10,23 @@
 <a href="/artificial-intelligence-algorithms.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/soft-computing.png"></img></a>
 <a href="/artificial-intelligence-algorithms.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/computational-cognitive-science.png"></img></a>
 </td>
-<td align="center"><a href="/machine-learning-algorithms.md">Machine Learning Algorithms Training</a><br><br>
-<a href="/machine-learning-algorithms.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/machine-learning.png"></img></a>
-<a href="/machine-learning-algorithms.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/supervised-learning.png"></img></a>
-<a href="/machine-learning-algorithms.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/unsupervised-learning.png"></img></a>
+<td align="center"><a href="https://github.com/cs-MohamedAyman/Machine-Learning-Algorithms/blob/master/README.md">Machine Learning Algorithms Training</a><br><br>
+<a href="https://github.com/cs-MohamedAyman/Machine-Learning-Algorithms/blob/master/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/machine-learning.png"></img></a>
+<a href="https://github.com/cs-MohamedAyman/Machine-Learning-Algorithms/blob/master/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/supervised-learning.png"></img></a>
+<a href="https://github.com/cs-MohamedAyman/Machine-Learning-Algorithms/blob/master/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/unsupervised-learning.png"></img></a>
 </td>
         </tr>
     </tbody>
     <tbody>
 <td align="center"><a href="/artificial-intelligence-algorithms.md"><img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-covers/3-1.png"></img></a></td>
-<td align="center"><a href="/machine-learning-algorithms.md">       <img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-covers/3-2.png"></img></a></td>
+<td align="center"><a href="https://github.com/cs-MohamedAyman/Machine-Learning-Algorithms/blob/master/README.md">       <img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-covers/3-2.png"></img></a></td>
     </tbody>
     <tbody>
         <tr>
-<td align="center"><a href="/neural-networks-and-deep-learning.md">Neural Networks and Deep Learning Training</a><br><br>
-<a href="/neural-networks-and-deep-learning.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/neural-networks.png"></img></a>
-<a href="/neural-networks-and-deep-learning.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/deep-learning.png"></img></a>
-<a href="/neural-networks-and-deep-learning.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/generative-adversarial-network.png"></img></a>
+<td align="center"><a href="https://github.com/cs-MohamedAyman/Neural-Networks-and-Deep-Learning/blob/master/README.md">Neural Networks and Deep Learning Training</a><br><br>
+<a href="https://github.com/cs-MohamedAyman/Neural-Networks-and-Deep-Learning/blob/master/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/neural-networks.png"></img></a>
+<a href="https://github.com/cs-MohamedAyman/Neural-Networks-and-Deep-Learning/blob/master/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/deep-learning.png"></img></a>
+<a href="https://github.com/cs-MohamedAyman/Neural-Networks-and-Deep-Learning/blob/master/README.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/generative-adversarial-network.png"></img></a>
 </td>
 <td align="center"><a href="/intelligent-automation.md">Intelligent Automation Training</a><br><br>
 <a href="/intelligent-automation.md"><img align="center" width="80" src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/logos/cognitive-automation.png"></img></a>
@@ -36,7 +36,7 @@
         </tr>
     </tbody>
     <tbody>
-<td align="center"><a href="/neural-networks-and-deep-learning.md"><img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-covers/3-3.png"></img></a></td>
+<td align="center"><a href="https://github.com/cs-MohamedAyman/Neural-Networks-and-Deep-Learning/blob/master/README.md"><img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-covers/3-3.png"></img></a></td>
 <td align="center"><a href="/intelligent-automation.md">           <img src="https://github.com/cs-MohamedAyman/cs-MohamedAyman/blob/master/repos-covers/3-4.png"></img></a></td>
     </tbody>
     <tbody>
